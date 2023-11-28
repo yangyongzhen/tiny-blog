@@ -25,12 +25,26 @@ HotArts = []
 def index():
     articles.Stat.totalVisit += 1
     page = 1
-    try:
-        page = request.args.get('page')
-        print(page)
-    except Exception as e:
-        print(e)
+    page = request.args.get('page',1,int)
     print(page)
+    nums = len(NewPosts)
+    print(nums)
+    allpage = nums / 5
+    if nums %5 != 0:
+        allpage = int(nums/5) + 1
+    print(allpage)
+
+    curArts = NewPosts
+    if (page * 5) < nums :
+        curArts = NewPosts[(page-1)*5 : page*5]
+    else:
+        curArts = NewPosts[(page-1)*5 : nums]
+    #分页表
+    tabs = []
+    for i in range(0,allpage+2):
+        print(i)
+        tabs.append(i)
+    print(tabs)
     return render_template("index.html")  #加入变量传递
 
 @app.route('/about')
