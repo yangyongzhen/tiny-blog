@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>风宇个人博客</title>
+</head>
+
+<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+
+<link href="logo.ico" rel="shortcut icon"/>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/jquery.page.js"></script>
+<script src="static/js/common.js"></script>
+<script src='static/plugin/Valine.min.js'></script>
+<!-- <script src='//unpkg.com/valine/dist/Valine.min.js'></script> -->
+<!--<script src="js/snowy.js"></script>-->
+
+<body>
+	{%include 'header.html' %}
+	<div class="w_container">
+		<div class="container">
+			<div class="row w_main_row">
+				<ol class="breadcrumb w_breadcrumb">
+				  <li><a href="#">首页</a></li>
+				  <li class="active">评论</li>
+				  <span class="w_navbar_tip">你，生命中最重要的过客，之所以是过客，因为你未曾为我停留。</span>
+				</ol>
+				
+				<div class="col-lg-9 col-md-9 w_main_left">
+					<div id="vcomments"></div>
+					<script>
+						new Valine({
+							el: '#vcomments',
+							appId: '21MG1aSIkC71uv7v0NcpKsuk-gzGzoHsz',
+							appKey: 'ESkTqJu5BOJhiSgaZNoAQrVP',
+							placeholder: "你是我一生只会遇见一次的惊喜 ...",
+							cdn:"cravatar.cn",
+							avatar:'monsterid',//小怪物头像,
+							visitor: true // 阅读量统
+						})
+					</script>
+					
+					<!--PC版-->
+					<!--<div id="SOHUCS" sid="5eab7e4c363e4cb8bed0efa3604e6b42"></div>
+					<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+					<script type="text/javascript">
+					window.changyan.api.config({
+					appid: 'cysPwLFm1',
+					conf: 'prod_6c6350e206c502f569b865b4bf121e60'
+					});
+					</script>-->
+					
+				</div>
+				<div class="col-lg-3 col-md-3 w_main_right">
+					<img src="static/img/slider/aboutphoto.png" />
+				</div>
+			
+			</div>
+		</div>
+	</div>
+	{%include 'footer.html' %}
+	<!--snow-->
+	<!--<div class="snow-container"></div>-->
+</body>
+</html>

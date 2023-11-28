@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>风宇个人博客</title>
+</head>
+
+<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+<link rel="stylesheet" type="text/css" href="static/css/article_detail.css"/>
+<link href="logo.ico" rel="shortcut icon"/>
+<link href="//cdn.bootcdn.net/ajax/libs/highlight.js/10.0.3/styles/railscasts.min.css" rel="stylesheet">
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!--<script type="text/javascript" src="plugin/jquery.page.js"></script>-->
+<script src="static/js/common.js"></script>
+<!-- <script src='//unpkg.com/valine/dist/Valine.min.js'></script> -->
+<script src='static/plugin/Valine.min.js'></script>
+<!--<script src="js/snowy.js"></script>-->
+<script src="//cdn.bootcdn.net/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/markdown-it/13.0.1/markdown-it.min.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/markdown-it-footnote/3.0.2/markdown-it-footnote.min.js"></script>
+<script src="//cdn.bootcdn.net/ajax/libs/markdown-it-emoji/1.4.0/markdown-it-emoji.min.js"></script>
+<script src="static/js/markdown-it-checkbox.min.js"></script>
+
+
+<body>
+	{%include 'header.html' %}
+	<div class="w_container">
+		<div class="container">
+			<div class="row w_main_row">
+				
+				<ol class="breadcrumb w_breadcrumb">
+				  <li><a href="/">首页</a></li>
+				  <li><a href={{ "/items?id="+itmIdx +"&page=1"}}>{{data.item}}</a></li>
+				  <li class="active">{{data.title}}</li>
+				  <span class="w_navbar_tip">我们长路漫漫，只因学无止境。</span>
+				</ol>
+				
+				<div class="col-lg-9 col-md-9 w_main_left">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							
+							<h2 id="titiles_id" class="c_titile">{{data.title}}</h2>
+							<p class="box_c"><span class="d_time">发布时间：{{data.date}}</span><span>编辑：<a href="mailto:wfyv@qq.com">{{data.author}}</a></span><span>阅读（{{data.visitCnt}}）</span></p>
+							<ul class="infos">
+								<div class="md_render">
+								</div>
+							</ul>
+															
+							<input type="hidden"  id="enrolled_id" value="{{ data.body }}">
+							<div class="share" style="height:40px;padding-right:0em;padding-top:1em;"> 
+								<div id="share_button" class="social-share" style="float:right;padding-right:2em;padding-top:1em;"></div>
+								<div id="share_button_proto" style="display:none;">
+									<a class="bshareDiv" href="http://www.bshare.cn/share">分享按钮</a>
+									<script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#uuid=15e016b4-0028-44f1-a40d-a3c9d9c13c28&style=10&bgcolor=#fff&bp=weixin,qqim,qzone,qqmb,sinaminiblog,fanfou,xueqiu,douban,facebook,twitter,gplus,instapaper&ssc=false"></script>
+									<script type="text/javascript" charset="utf-8">
+									bShare.addEntry({
+										title: document.getElementById("titiles_id").innerHTML,
+									url:window.location.href
+									});
+									</script>
+								</div>
+								<script>
+								document.getElementById("share_button").innerHTML=document.getElementById("share_button_proto").innerHTML;
+								</script>
+							</div>
+							<!-- <div class="keybq">
+						    	<p><span>关键字</span>：<a class="label label-default">个人博客</a><a class="label label-default">阿里云</a><a class="label label-default">空间</a></p>    
+						    </div> -->
+							
+							<div class="nextinfo">
+								<p class="last">上一篇：<a href="#">免费收录网站搜索引擎登录口大全</a></p>
+								<p class="next">下一篇：<a href="#">javascript显示年月日时间代码</a></p>
+						    </div>
+							
+						</div>
+					</div>
+					
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div id="vcomments"></div>
+							<script>
+								new Valine({
+									el: '#vcomments',
+									appId: '21MG1aSIkC71uv7v0NcpKsuk-gzGzoHsz',
+									appKey: 'ESkTqJu5BOJhiSgaZNoAQrVP',
+									placeholder: "你是我一生只会遇见一次的惊喜 ...",
+									cdn:"cravatar.cn",
+									avatar:'monsterid',//小怪物头像,
+									visitor: true // 阅读量统
+								})
+							</script>
+							<!--
+							<center><div id="cyReward" role="cylabs" data-use="reward" sid="5eab7e4c363e4cb8bed0efa3604e6b42"></div></center>
+							
+							<script type="text/javascript" charset="utf-8" src="https://changyan.itc.cn/js/lib/jquery.js"></script>
+							<script type="text/javascript" charset="utf-8" src="https://changyan.sohu.com/js/changyan.labs.https.js?appid=cysPwLFm1"></script>
+							-->
+							<!--PC版-->
+							<!--<div id="SOHUCS" sid="5eab7e4c363e4cb8bed0efa3604e6b42"></div>
+							<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>							
+							<script type="text/javascript">
+							window.changyan.api.config({
+							appid: 'cysPwLFm1',
+							conf: 'prod_6c6350e206c502f569b865b4bf121e60'
+							});
+							</script>-->
+							
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-3 w_main_right">
+					
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">最新发布</h3>
+					  </div>
+					  <div class="panel-body">
+					    	<ul class="list-unstyled sidebar">				
+								<li><a href="/post/04928311">排序算法之冒泡排序 － java实现</a></li>
+								<li><a href="/post/32097759">快速搭建基于二进制日志文件的 mysql 复制</a></li>							
+								<li><a href="/post/09196557">web 服务器负载均衡教程，快速搭建高可用服务器集群</a></li>							
+								<li><a href="/post/20654391">使用 redis 和 spring-session 实现 tomcat、glassfish 等 web 服务器集群 session 共享</a></li>							
+								<li><a href="/post/41501569">使用 Nginx 实现 tomcat、glassfish 等 web 服务器负载均衡</a></li>							
+								<li><a href="/post/89658700">mysql 复制（replication）基础概念和应用场景简介</a></li>							
+								<li><a href="/post/03088922">redis 单节点在 Linux 生产环境的安装和简单配置</a></li>							
+								<li><a href="/post/05203355">使用 jQuery 的 val() 方法来获取以及设置表单元素值</a></li>							
+								<li><a href="/post/03120718">使用 jQuery 的 removeProp() 方法来删除元素的特性（property）</a></li>							
+								<li><a href="/post/37454977">使用 jQuery 的 prop() 方法来获取以及设置元素的特性（property）</a></li>							
+						</ul>
+					  </div>
+					</div>
+					
+					<div class="panel panel-default">
+					  <div class="panel-heading">
+					    <h3 class="panel-title">友情链接</h3>
+					  </div>
+					  <div class="panel-body">
+					    <div class="newContent">
+					    	<ul class="list-unstyled sidebar shiplink">				
+								<li><a href="https://www.baidu.com/" target="_blank">百度</a></li>
+								<li><a href="https://www.oschina.net/" target="_blank">开源中国</a></li>							
+								<li><a href="http://www.ulewo.com/" target="_blank">有乐网</a></li>							
+								<li><a href="http://www.sina.com.cn/" target="_blank">新浪网</a></li>							
+								<li><a href="http://www.qq.com/" target="_blank">腾讯网</a></li>							
+							</ul>
+					    </div>
+					  </div>
+					</div>
+				</div>
+			
+			
+			</div>
+		</div>
+	</div>
+	{%include 'footer.html' %}
+	<script>
+		var md;
+		var defaults = {
+		html: false, // Enable HTML tags in source
+		xhtmlOut: false, // Use '/' to close single tags (<br />)
+		breaks: false, // Convert '\n' in paragraphs into <br>
+		langPrefix: 'language-', // CSS language prefix for fenced blocks
+		linkify: true, // autoconvert URL-like texts to links
+		typographer: true, // Enable smartypants and other sweet transforms
+		// options below are for demo only
+		_highlight: true,
+		_strict: false,
+		_view: 'html' // html / src / debug
+		};
+		defaults.highlight = function (str, lang) {
+		var esc = md.utils.escapeHtml;
+		
+		if (lang && hljs.getLanguage(lang)) {
+			try {
+			return '<pre class="hljs"><code>' +
+					hljs.highlight(lang, str, true).value +
+					'</code></pre>';
+			} catch (__) {}
+		}
+		return '<pre class="hljs"><code>' + esc(str) + '</code></pre>';
+		};
+		md = window.markdownit(defaults).use(window.markdownitCheckbox).use(window.markdownitEmoji).use(window.markdownitFootnote);
+		var dat = document.querySelector('#enrolled_id').value;
+		$('.md_render').html(md.render(dat));
+	</script>
+	<!--snow-->
+	<!--<div class="snow-container"></div>-->
+</body>
+</html>
