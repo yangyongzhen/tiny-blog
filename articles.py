@@ -10,6 +10,18 @@ import statistic
 #访问量阅读量统计信息
 Stat = statistic.AllStat()
 
+# AllArts 总的文章，(按时间排过序的)
+AllArts = []
+# NewArts 最新文章
+NewArts = []
+# HotArts 热门文章
+HotArts = []
+# 文章分类信息
+ItemList = []
+
+ItemMap = {}
+ArtRouteMap = {}
+
 #文章信息类定义
 class Article(object):
     def __init__(self, id, item, title, date, summary, body, imgFile, author, cmtCnt, visitCnt):
@@ -62,12 +74,18 @@ def strTrip(src):
 
 #从文件中读取信息,并返回itemMap,artRouteMap,items
 def getPosts():
+    global ItemMap,ArtRouteMap,ItemList,NewArts
     # 打开访问量统计JSON文件并读取内容
-    with open('statistic.json1', 'r',encoding='utf-8') as file:
-        json_data = file.read()
-        # 将JSON字符串反序列化为字典对象
-        Stat.__dict__ = json.loads(json_data)
-        print(Stat.totalVisit)
+    try:
+        with open('statistic.json1', 'r',encoding='utf-8') as f:
+            json_data = f.read()
+            # 将JSON字符串反序列化为字典对象
+            Stat.__dict__ = json.loads(json_data)
+            print(Stat.totalVisit)
+    except Exception as e:
+        with open('statistic.json1', 'w',encoding='utf-8') as f:
+            json.dump(Stat.__dict__, f,ensure_ascii=False)
+
     # 获取"posts/"目录下的所有文件
     files = glob.glob("posts/*")
     # 按修改日期进行排序
@@ -102,12 +120,14 @@ def getPosts():
         body = '\n'.join(lines[6:])  # 获取第6行及以后的行
         ar = ArticleRoute(item, title)
         artRouteMap[id] = ar.__dict__
-        visitCnt = 0
+        visitCnt = 0 #访问量
+        commentCnt = 0 #评论数
         if id in Stat.artStat:
            visitCnt = Stat.artStat[id]['visitCnt']
-           print(visitCnt)
+           commentCnt = Stat.artStat[id]['commentCnt']
+           #print(visitCnt)
         else:
-            Stat.artStat[id] = statistic.ArtStat(title,visitCnt,0).__dict__
+            Stat.artStat[id] = statistic.ArtStat(title,visitCnt,commentCnt).__dict__
         post = Article(id,item,title, date, summary, body, imgfile, author, 0,visitCnt)
         articleMap[id] = post
         items.add(item)
@@ -130,6 +150,21 @@ def getPosts():
     with open('artRouteMap.json1', 'w',encoding='utf-8') as f:
         json.dump(artRouteMap, f,ensure_ascii=False)
     itemList.sort()
+    
+    #遍历字典
+    for key, val in itemMap.items():
+        for idx,art in val.items():
+            AllArts.append(art)
+            HotArts.append(art)        
+    #按日期排序
+    AllArts.sort(key=lambda x: x['date'],reverse=True)
+    #按访问量排序
+    HotArts.sort(key=lambda x: x['visitCnt'],reverse=True)
+    NewArts = AllArts
+    ItemList = itemList
+    #print((HotArts[0]))
+    ItemMap = itemMap
+    ArtRouteMap = artRouteMap
     return itemMap,artRouteMap,itemList
 
 if __name__=="__main__":

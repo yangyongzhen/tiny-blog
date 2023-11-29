@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>风宇个人博客</title>
+	<title>杨工个人博客</title>
 </head>
 
 <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="static/css/article_detail.css"/>
 <link href="logo.ico" rel="shortcut icon"/>
 <link href="//cdn.bootcdn.net/ajax/libs/highlight.js/10.0.3/styles/railscasts.min.css" rel="stylesheet">
+<link href="//cdn.bootcdn.net/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!--<script type="text/javascript" src="plugin/jquery.page.js"></script>-->
@@ -33,7 +34,7 @@
 				
 				<ol class="breadcrumb w_breadcrumb">
 				  <li><a href="/">首页</a></li>
-				  <li><a href={{ "/items?id="+itmIdx +"&page=1"}}>{{data.item}}</a></li>
+				  <li><a href={{ "/items?id="+data.item +"&page=1"}}>{{data.item}}</a></li>
 				  <li class="active">{{data.title}}</li>
 				  <span class="w_navbar_tip">我们长路漫漫，只因学无止境。</span>
 				</ol>
@@ -50,7 +51,26 @@
 							</ul>
 															
 							<input type="hidden"  id="enrolled_id" value="{{ data.body }}">
-							<div class="share" style="height:40px;padding-right:0em;padding-top:1em;"> 
+							<!--版权-->
+							<div class="post-copyright">
+								<div>
+								<span><i class="fas fa-copyright"></i>文章标题：{{data.title}}</span>
+								<br>
+								<span><i class="fa fa-link"></i>
+								本文链接：<a href={{"/article_detail?id="+data.id}} style="color: cadetblue;" title={{data.title}}>{{ request.url }}</a>
+								</span>
+								<br>
+								<span><i class="fas fa-exclamation-circle"></i>
+								版权声明：若无特殊标注，文章皆<a href="https://blog.csdn.net/qq8864" target="_blank" data-original-title="特立独行的猫a" style="color: cadetblue;">特立独行的猫a</a>原创，转载请注明出处。
+								</span> 
+								<br>
+								<span style="color:#5fc600"><i class="fas fa-grin-stars"></i>
+								赞赏文章：如果该文章有帮助，可以扫微信赞赏码对作者进行鼓励。
+								</span> 
+								</div>
+								<!--<img src="https://cdn.lovebykin.com/ztb-ui/zanshang.jpg" title="吱托邦微信赞赏码" alt="吱托邦微信赞赏码">-->
+							</div>
+							<div class="share" style="height:30px;padding-right:0em;padding-top:0em;"> 
 								<div id="share_button" class="social-share" style="float:right;padding-right:2em;padding-top:1em;"></div>
 								<div id="share_button_proto" style="display:none;">
 									<a class="bshareDiv" href="http://www.bshare.cn/share">分享按钮</a>
@@ -87,9 +107,18 @@
 									appId: '21MG1aSIkC71uv7v0NcpKsuk-gzGzoHsz',
 									appKey: 'ESkTqJu5BOJhiSgaZNoAQrVP',
 									placeholder: "你是我一生只会遇见一次的惊喜 ...",
-									cdn:"cravatar.cn",
-									avatar:'monsterid',//小怪物头像,
-									visitor: true // 阅读量统
+									avatar:'mm',//小怪物头像,
+									path: window.location.href,
+									visitor: true, // 阅读量统
+									callbacks: {
+										loadFinish: function (data) {
+											console.log('commentsCount:');
+										// 调用Valine的API获取评论数
+										valine.api('commentsCount', function (err, count) {
+											console.log(count);
+										});
+										}
+									}
 								})
 							</script>
 							<!--
@@ -114,23 +143,30 @@
 				<div class="col-lg-3 col-md-3 w_main_right">
 					
 					<div class="panel panel-default">
-					  <div class="panel-heading">
-					    <h3 class="panel-title">最新发布</h3>
-					  </div>
-					  <div class="panel-body">
-					    	<ul class="list-unstyled sidebar">				
-								<li><a href="/post/04928311">排序算法之冒泡排序 － java实现</a></li>
-								<li><a href="/post/32097759">快速搭建基于二进制日志文件的 mysql 复制</a></li>							
-								<li><a href="/post/09196557">web 服务器负载均衡教程，快速搭建高可用服务器集群</a></li>							
-								<li><a href="/post/20654391">使用 redis 和 spring-session 实现 tomcat、glassfish 等 web 服务器集群 session 共享</a></li>							
-								<li><a href="/post/41501569">使用 Nginx 实现 tomcat、glassfish 等 web 服务器负载均衡</a></li>							
-								<li><a href="/post/89658700">mysql 复制（replication）基础概念和应用场景简介</a></li>							
-								<li><a href="/post/03088922">redis 单节点在 Linux 生产环境的安装和简单配置</a></li>							
-								<li><a href="/post/05203355">使用 jQuery 的 val() 方法来获取以及设置表单元素值</a></li>							
-								<li><a href="/post/03120718">使用 jQuery 的 removeProp() 方法来删除元素的特性（property）</a></li>							
-								<li><a href="/post/37454977">使用 jQuery 的 prop() 方法来获取以及设置元素的特性（property）</a></li>							
-						</ul>
-					  </div>
+						<div class="panel-heading">
+							<h3 class="panel-title">最新发布</h3>
+						</div>
+						<div class="panel-body">
+							<ul class="list-unstyled sidebar">
+								{% for art in news %}
+								<li><a href={{"/article_detail?id="+art.id}}>{{art.title}}</a>
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">热门点击</h3>
+						</div>
+						<div class="panel-body">
+							<ul class="list-unstyled sidebar">
+								{% for art in hots %}
+								<li><a href={{"/article_detail?id="+art.id}}>{{art.title}}</a>
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
 					</div>
 					
 					<div class="panel panel-default">
@@ -150,7 +186,6 @@
 					  </div>
 					</div>
 				</div>
-			
 			
 			</div>
 		</div>

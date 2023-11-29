@@ -316,6 +316,25 @@ a,a:hover{
 .sunnav li a { color: #fff; opacity: 0.9 }
 .sunnav li a:hover { padding-left: 20px; opacity: 1 }
 
+.post-copyright {
+	margin: 0 0 25px;
+	color: #999;
+	padding: 6px;
+	background: rgba(204,204,204,0.22);
+	font-size: 13px;
+	border-left: 3px solid #ccc;
+	text-align: left;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-flow: row wrap;
+	line-height:2;
+  }
+  .post-copyright img {
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+	width: 99px;
+	height: 99px;
+  }
 /********************containner结束*********************/
 /********************底部开始*********************/
 .w_foot{
