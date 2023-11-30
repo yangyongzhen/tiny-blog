@@ -140,7 +140,7 @@ def getPosts():
             if(v.item == itm):
                 itmMp[v.id] = v.__dict__
         itemMap[itm] = itmMp
-        itemList.append(itm)
+        itemList.append({'item':itm,'count':len(itemMap[itm])})
             
         
     #保存为json文件
@@ -149,7 +149,9 @@ def getPosts():
         
     with open('artRouteMap.json1', 'w',encoding='utf-8') as f:
         json.dump(artRouteMap, f,ensure_ascii=False)
-    itemList.sort()
+        
+    with open('itemList.json1', 'w',encoding='utf-8') as f:
+        json.dump(itemList, f,ensure_ascii=False)
     
     #遍历字典
     for key, val in itemMap.items():

@@ -120,7 +120,7 @@ $(function(){
 							<div class="sunnav">
 								<ul style="padding-left:0em;padding-top:0em;">
 									{% for itm in items %}
-									<li><a href={{"/items?id="+itm}} title={{itm}}>{{itm}}</a></li>
+									<li><a href={{"/items?id="+itm['item']}} title={{itm['item']}}>{{itm['item']+'('+itm['count']|safe+')'}}</a></li>
 									{% endfor %}
 								  </ul>
 							  </div>

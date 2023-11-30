@@ -93,13 +93,27 @@ def article_detail():
         print(item)
         art = articles.ItemMap[item][id]  
         #art_index  = NewPosts.index(id)
+        #遍历获取文章上一篇和下一篇的文章
+        pre_art = art
+        next_art = art
+        art_list = list(articles.ItemMap[item].values())
+        length = len(art_list) 
+        for i in range(length): 
+            if art_list[i]['id'] == id :
+                break
+            
+        if i != 0:
+            pre_art = art_list[i-1]
+        if i != length-1:
+            next_art = art_list[i+1]
+            
         articles.Stat.artStat[id]['visitCnt'] += 1
         articles.Stat.totalVisit += 1
         articles.ItemMap[item][id]['visitCnt'] = articles.Stat.artStat[id]['visitCnt']
         #print(art)
         #print(item_index)
         #print(art_index)
-        return render_template("article_detail.html",data=art,news=articles.NewArts[:9],hots=articles.HotArts[:9] ) 
+        return render_template("article_detail.html",data=art,pre=pre_art,next=next_art,items=articles.ItemList,news=articles.NewArts[:9],hots=articles.HotArts[:9] ) 
     except Exception as e:
         print("Exception occured")
         return render_template('404.html')

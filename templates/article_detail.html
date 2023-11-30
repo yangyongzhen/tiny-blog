@@ -91,8 +91,8 @@
 						    </div> -->
 							
 							<div class="nextinfo">
-								<p class="last">上一篇：<a href="#">免费收录网站搜索引擎登录口大全</a></p>
-								<p class="next">下一篇：<a href="#">javascript显示年月日时间代码</a></p>
+								<p class="last">上一篇：<a href={{"/article_detail?id="+pre['id']}}>{{pre['title']}}</a></p>
+								<p class="next">下一篇：<a href={{"/article_detail?id="+next['id']}}>{{next['title']}}</a></p>
 						    </div>
 							
 						</div>
@@ -142,6 +142,20 @@
 				</div>
 				<div class="col-lg-3 col-md-3 w_main_right">
 					
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title">文章分类</h3>
+						</div>
+						<div class="panel-body">
+							<div class="sunnav">
+								<ul style="padding-left:0em;padding-top:0em;">
+									{% for itm in items %}
+									<li><a href={{"/items?id="+itm['item']}} title={{itm['item']}}>{{itm['item']+'('+itm['count']|safe+')'}}</a></li>
+									{% endfor %}
+								  </ul>
+							  </div>
+						</div>
+					</div>
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h3 class="panel-title">最新发布</h3>
