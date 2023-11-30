@@ -130,6 +130,11 @@ def comment():
     msg="my name is caojianhua, China up!"
     return render_template("comment.html",data=msg) 
 
+# admin页面 
+@app.route('/admin')
+def admin():
+    return render_template("admin.html") 
+
 @app.route('/404')
 def error_404():
     print("error_404")
