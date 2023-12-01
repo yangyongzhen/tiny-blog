@@ -12,12 +12,13 @@ class ArtStat:
   
 #总的统计        
 class AllStat:
-    #Notice通知
-    notice = ''
-    top_art= ''
     def __init__(self):
         #总访问量
         self.totalVisit = 0
+        #Notice通知
+        self.notice = ''
+        #置顶的文章
+        self.top_art= ''
         self.artStat = {}
 
 
