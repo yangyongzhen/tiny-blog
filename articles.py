@@ -1,9 +1,11 @@
 # encoding: utf-8
 # author:yangyongzhen
+# blog.csdn.net/qq8864
 import glob
 import os
 import pprint
 import hashlib
+import dateutil.parser
 import json
 import statistic
 
@@ -21,6 +23,14 @@ ItemList = []
 
 ItemMap = {}
 ArtRouteMap = {}
+
+#判断是否是正确的日期格式
+def is_date(date_string):
+    try:
+        dateutil.parser.parse(date_string)
+        return True
+    except ValueError:
+        return False
 
 #文章信息类定义
 class Article(object):
@@ -109,6 +119,9 @@ def getPosts():
         #print(lines)
         title = lines[0].strip()
         date = strTrip(lines[1].strip())
+        if is_date(date) != True:
+            print(file+",日期格式不正确!")
+            continue
         summary = lines[2].strip()
         imgfile = lines[3].strip()
         id = hashlib.md5(file.encode(encoding='UTF-8'))

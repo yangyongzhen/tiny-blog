@@ -1,12 +1,16 @@
 # encoding: utf-8
 # author:yangyongzhen
+# blog.csdn.net/qq8864
 from flask import  Flask,render_template,request,redirect
 import articles
 import atexit
 import json
-import sys
+import os
 
 app=Flask(__name__,template_folder="templates", static_folder="static", static_url_path="/static")
+
+# 访问安全认证码
+verify_code = "111111"
 
 # 首页
 @app.route('/')
@@ -17,10 +21,10 @@ def index():
     print(page)
     nums = len(articles.AllArts)
     print(nums)
-    allpage = nums / 5
+    allpage = int(nums / 5)
     if nums %5 != 0:
         allpage = int(nums/5) + 1
-    print(allpage)
+    #print(allpage)
 
     curArts = articles.AllArts
     if (page * 5) < nums :
@@ -30,10 +34,9 @@ def index():
     #分页表
     tabs = []
     for i in range(0,allpage):
-        print(i)
         tabs.append(i)
     print(tabs)
-    return render_template("index.html",arts=curArts,news=articles.NewArts[:9],hots=articles.HotArts[:9],items=articles.ItemList,curPage=page,tab=tabs)  #加入变量传递
+    return render_template("index.html",arts=curArts,news=articles.NewArts[:9],hots=articles.HotArts[:9],notice=articles.Stat.notice,items=articles.ItemList,curPage=page,tab=tabs)  #加入变量传递
 
 @app.route('/about')
 def about():
@@ -83,8 +86,6 @@ def items():
 # 文章详情页
 @app.route('/article_detail')
 def article_detail():
-    art = articles.Article("","","","","","","","",0,0)
-    item_index = 0
     try:
         id = request.args.get('id')
         #print(id)
@@ -135,6 +136,71 @@ def comment():
 def admin():
     return render_template("admin.html") 
 
+# 提交说说
+@app.route('/saysay',methods=['POST','GET'])
+def saysay():
+    my_notice = {'TimeOut': 5, 'Href': '/','IsSucc':True,'Mess':'成功'}
+    print(request.form)
+    code = request.form['code']
+    if code != verify_code: 
+        my_notice['IsSucc'] = False
+        my_notice['Mess'] = '授权码错误'
+    else:
+        my_notice['IsSucc'] = True
+
+    print(my_notice)
+    return render_template("success.html",nt=my_notice) 
+
+# 提交公告
+@app.route('/pub_notice',methods=['POST','GET'])
+def pub_notice():
+    my_notice = {'TimeOut': 5, 'Href': '/','IsSucc':True,'Mess':'成功'}
+    print(request.form)
+    code = request.form['code']
+    if code != verify_code: 
+        my_notice['IsSucc'] = False
+        my_notice['Mess'] = '授权码错误'
+    else:
+        my_notice['IsSucc'] = True
+        articles.Stat.notice = request.form['notice']
+    return render_template("success.html",nt=my_notice) 
+
+# 提交置顶
+@app.route('/pub_top',methods=['POST','GET'])
+def pub_top():
+    my_notice = {'TimeOut': 5, 'Href': '/','IsSucc':True,'Mess':'成功'}
+    print(request.form)
+    code = request.form['code']
+    if code != verify_code: 
+        my_notice['IsSucc'] = False
+        my_notice['Mess'] = '授权码错误'
+    else:
+        my_notice['IsSucc'] = True
+        articles.Stat.top_art = request.form['top']
+    return render_template("success.html",nt=my_notice) 
+
+# 文件上传(发布文章)
+@app.route('/file_upload', methods=['POST','GET'])
+def file_upload():
+    print(request.files)
+    my_notice = {'TimeOut': 5, 'Href': '/','IsSucc':True,'Mess':'成功'}
+    if request.method == 'POST' and 'file' in request.files:
+        file = request.files['file']
+        print(file)
+        code = request.form['code']
+        if code != verify_code: 
+            my_notice['IsSucc'] = False
+            my_notice['Mess'] = '授权码错误'
+        else:
+            my_notice['IsSucc'] = True
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+            print(file.filename)
+            articles.getPosts()
+    else:
+        return render_template('404.html')
+    
+    return render_template("success.html",nt=my_notice) 
+    
 @app.route('/404')
 def error_404():
     print("error_404")
@@ -167,6 +233,6 @@ def exit_handler():
 if __name__=="__main__":
     #启动时加载访问量数据
     articles.getPosts()
-    
-    app.run(port=8000,host="127.0.0.1",debug=False)
+    app.config['UPLOAD_FOLDER'] = 'posts'
+    app.run(port=8000,host="0.0.0.0",debug=False)
     print("over")

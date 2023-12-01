@@ -12,7 +12,6 @@
 <link href="logo.ico" rel="shortcut icon"/>
 <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="static/plugin/jquery.page.js"></script>
 <script src="static/js/common.js"></script>
 <!--<script src="js/snowy.js"></script>-->
 
@@ -34,27 +33,48 @@
 						<form action="/saysay" method="post">
 							<div class="form-group">
 								<label for="author">作者</label>
-								<input type="text" class="form-control" id="author" placeholder="作者">
+								<input type="text" class="form-control" id="author" name="author" placeholder="作者">
 							</div>
 							<div class="form-group">
 								<label for="pic">图片</label>
-								<input type="text" class="form-control" id="pic" placeholder="说说的网络图片url">
+								<input type="text" class="form-control" id="pic" name="pic" placeholder="说说的网络图片url">
 							</div>
 							<div class="form-group">
 								<label for="say">说说</label>
-								<textarea class="form-control" id="message" name="message" rows="3" placeholder="说说的内容" required></textarea>
+								<textarea class="form-control" id="says" name="saysay" rows="3" placeholder="说说的内容" required></textarea>
 							</div>
-							<button type="submit" class="btn btn-default">发表</button>
+							<div class="form-group">
+								<label class="label label-warning" for="code">授权码</label>
+								<input type="password" class="form-control" name="code" id="code" placeholder="请填入授权码" required>
+							</div>
+							<button type="submit" class="btn btn-success">发表</button>
+						</form>
+
+						<h2>发布公告</h2>
+						<form action="/pub_notice" method="post">
+							<div class="form-group">
+								<label for="say">公告</label>
+								<textarea class="form-control" id="notice" name="notice" rows="3" placeholder="公告的内容" required></textarea>
+							</div>
+							<div class="form-group">
+								<label class="label label-warning" for="code">授权码</label>
+								<input type="password" class="form-control" name="code" id="code" placeholder="请填入授权码" required>
+							</div>
+							<button type="submit" class="btn btn-success">发布</button>
 						</form>
 
 						<h2>上传文章</h2>
 						<form action="file_upload" method="post" enctype="multipart/form-data">
 							<div class="form-group">
-								<label for="exampleInputFile">文件上传</label>
-								<input type="file" id="file_upload" accept=".md,.md">
+								<label for="inputFile">文件上传</label>
+								<input type="file" id="file_upload" name="file" accept=".md,.md" required>
 								<p class="help-block">Example block-level help text here.</p>
 							</div>
-							<button type="submit" class="btn btn-default">上传</button>
+							<div class="form-group">
+								<label class="label label-warning" for="code">授权码</label>
+								<input type="password" class="form-control" name="code" id="code" placeholder="请填入授权码" required>
+							</div>
+							<button type="submit" class="btn btn-success">上传</button>
 						</form>
 						
 					</div>

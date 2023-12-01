@@ -9,26 +9,26 @@
 <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
 <link rel="stylesheet" type="text/css" href="static/css/moodList.css"/>
-<link rel="stylesheet" href="static/plugin/jquery.page.css">
+<link rel="stylesheet" href="static/css/jquery.page.css">
 <link href="logo.ico" rel="shortcut icon"/>
 <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="static/plugin/jquery.page.js"></script>
+<!-- <script type="text/javascript" src="static/plugin/jquery.page.js"></script> -->
 <script src="static/js/common.js"></script>
 <!--<script src="js/snowy.js"></script>-->
 <script type="text/javascript">
 	
-$(function(){
-	$("#page").Page({
-	  totalPages: 7,//分页总数
-	  liNums: 5,//分页的数字按钮数(建议取奇数)
-	  activeClass: 'activP', //active 类样式定义
-	  callBack : function(page){
-			//console.log(page)
-	  }
-  });
-})
-</script>
+// $(function(){
+// 	$("#page").Page({
+// 	  totalPages: 7,//分页总数
+// 	  liNums: 5,//分页的数字按钮数(建议取奇数)
+// 	  activeClass: 'activP', //active 类样式定义
+// 	  callBack : function(page){
+// 			//console.log(page)
+// 	  }
+//   });
+// })
+// </script>
 
 <body>
 	{%include 'header.html' %}
@@ -46,7 +46,7 @@ $(function(){
 				
 			    <ul class="arrow_box">
 			     <div class="sy">
-			     <img src="img/slider/bb.jpg">
+			     <img src="static/img/slider/bb.jpg">
 			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。</p>
 			     </div>
 		      	<!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:22</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:0</span></p>-->
@@ -63,7 +63,7 @@ $(function(){
 			    
 			    <ul class="arrow_box">
 			         <div class="sy">
-			      <img src="img/slider/slide3.jpg">
+			      <img src="static/img/slider/slide3.jpg">
 			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
 			        </div>
 			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:100</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:0</span></p>-->
@@ -80,12 +80,100 @@ $(function(){
 			    
 			    <ul class="arrow_box">
 			         <div class="sy">
-			      <img src="img/slider/001.png">
+			      <img src="static/img/slider/001.png">
 			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
 			        </div>
 			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:1003</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:8</span></p>-->
 			        <span class="dateview">2016-12-25</span>
 			    </ul>
+			    
+			    <ul class="arrow_box">
+			     <div class="sy">
+			     <img src="static/img/slider/bb.jpg">
+			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。</p>
+			     </div>
+		      	<!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:22</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:0</span></p>-->
+			      <span class="dateview">2017-02-07</span>
+			    </ul>
+			    
+			    <ul class="arrow_box">
+			         <div class="sy">
+			      		<p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
+			        </div>
+			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:88</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:2</span></p>-->
+			      <span class="dateview">2017-02-01</span>
+			    </ul>
+			    
+			    <ul class="arrow_box">
+			         <div class="sy">
+			      <img src="static/img/slider/slide3.jpg">
+			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
+			        </div>
+			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:100</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:0</span></p>-->
+			        <span class="dateview">2017-01-28</span>
+			    </ul>
+			    
+			    <ul class="arrow_box">
+			         <div class="sy">
+			      		<p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
+			        </div>
+			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:10</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:1</span></p>-->
+			      <span class="dateview">2017-01-01</span>
+			    </ul>
+			    
+			    <ul class="arrow_box">
+			         <div class="sy">
+			      <img src="static/img/slider/001.png">
+			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
+			        </div>
+			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:1003</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:8</span></p>-->
+			        <span class="dateview">2016-12-25</span>
+			    </ul>
+			    
+			    
+			    <ul class="arrow_box">
+			     <div class="sy">
+			     <img src="static/img/slider/bb.jpg">
+			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。</p>
+			     </div>
+		      	<!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:22</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:0</span></p>-->
+			      <span class="dateview">2017-02-07</span>
+			    </ul>
+			    
+			    <ul class="arrow_box">
+			         <div class="sy">
+			      		<p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
+			        </div>
+			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:88</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:2</span></p>-->
+			      <span class="dateview">2017-02-01</span>
+			    </ul>
+			    
+			    <ul class="arrow_box">
+			         <div class="sy">
+			      <img src="static/img/slider/slide3.jpg">
+			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
+			        </div>
+			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:100</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:0</span></p>-->
+			        <span class="dateview">2017-01-28</span>
+			    </ul>
+			    
+			    <ul class="arrow_box">
+			         <div class="sy">
+			      		<p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
+			        </div>
+			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:10</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:1</span></p>-->
+			      <span class="dateview">2017-01-01</span>
+			    </ul>
+			    
+			    <ul class="arrow_box">
+			         <div class="sy">
+			      <img src="static/img/slider/001.png">
+			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
+			        </div>
+			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:1003</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:8</span></p>-->
+			        <span class="dateview">2016-12-25</span>
+			    </ul>
+			    
 			    
 			    <ul class="arrow_box">
 			     <div class="sy">
@@ -106,7 +194,7 @@ $(function(){
 			    
 			    <ul class="arrow_box">
 			         <div class="sy">
-			      <img src="img/slider/slide3.jpg">
+			      <img src="static/img/slider/slide3.jpg">
 			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
 			        </div>
 			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:100</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:0</span></p>-->
@@ -123,95 +211,7 @@ $(function(){
 			    
 			    <ul class="arrow_box">
 			         <div class="sy">
-			      <img src="img/slider/001.png">
-			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
-			        </div>
-			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:1003</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:8</span></p>-->
-			        <span class="dateview">2016-12-25</span>
-			    </ul>
-			    
-			    
-			    <ul class="arrow_box">
-			     <div class="sy">
-			     <img src="img/slider/bb.jpg">
-			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。</p>
-			     </div>
-		      	<!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:22</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:0</span></p>-->
-			      <span class="dateview">2017-02-07</span>
-			    </ul>
-			    
-			    <ul class="arrow_box">
-			         <div class="sy">
-			      		<p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
-			        </div>
-			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:88</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:2</span></p>-->
-			      <span class="dateview">2017-02-01</span>
-			    </ul>
-			    
-			    <ul class="arrow_box">
-			         <div class="sy">
-			      <img src="img/slider/slide3.jpg">
-			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
-			        </div>
-			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:100</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:0</span></p>-->
-			        <span class="dateview">2017-01-28</span>
-			    </ul>
-			    
-			    <ul class="arrow_box">
-			         <div class="sy">
-			      		<p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
-			        </div>
-			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:10</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:1</span></p>-->
-			      <span class="dateview">2017-01-01</span>
-			    </ul>
-			    
-			    <ul class="arrow_box">
-			         <div class="sy">
-			      <img src="img/slider/001.png">
-			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
-			        </div>
-			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:1003</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:8</span></p>-->
-			        <span class="dateview">2016-12-25</span>
-			    </ul>
-			    
-			    
-			    <ul class="arrow_box">
-			     <div class="sy">
-			     <img src="img/slider/bb.jpg">
-			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。</p>
-			     </div>
-		      	<!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:22</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:0</span></p>-->
-			      <span class="dateview">2017-02-07</span>
-			    </ul>
-			    
-			    <ul class="arrow_box">
-			         <div class="sy">
-			      		<p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
-			        </div>
-			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:88</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:2</span></p>-->
-			      <span class="dateview">2017-02-01</span>
-			    </ul>
-			    
-			    <ul class="arrow_box">
-			         <div class="sy">
-			      <img src="img/slider/slide3.jpg">
-			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
-			        </div>
-			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:100</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:0</span></p>-->
-			        <span class="dateview">2017-01-28</span>
-			    </ul>
-			    
-			    <ul class="arrow_box">
-			         <div class="sy">
-			      		<p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
-			        </div>
-			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:10</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:1</span></p>-->
-			      <span class="dateview">2017-01-01</span>
-			    </ul>
-			    
-			    <ul class="arrow_box">
-			         <div class="sy">
-			      <img src="img/slider/001.png">
+			      <img src="static/img/slider/001.png">
 			      <p> 我希望我的爱情是这样的，相濡以沫，举案齐眉，平淡如水。我在岁月中找到他，依靠他，将一生交付给他。做他的妻子，他孩子的母亲，为他做饭，洗衣服，缝一颗掉了的纽扣。然后，我们一起在时光中变老。</p>
 			        </div>
 			        <!--<p class="bloglist_count"><span class="count"><i class="glyphicon glyphicon-user"></i><a href="#">admin</a></span> <span class="count"><i class="glyphicon glyphicon-eye-open"></i>阅读:1003</span><span class="count"><i class="glyphicon glyphicon-comment"></i>评论:8</span></p>-->
@@ -219,11 +219,7 @@ $(function(){
 			    </ul>
 			    
 		  </div>
-		  
-			
-			<div id="page">
-				
-			</div>
+		
 			
 			
 			
