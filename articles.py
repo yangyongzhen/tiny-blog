@@ -9,9 +9,6 @@ import dateutil.parser
 import json
 import statistic
 
-#访问量阅读量统计信息
-Stat = statistic.AllStat()
-
 # AllArts 总的文章，(按时间排过序的)
 AllArts = []
 # NewArts 最新文章
@@ -90,11 +87,11 @@ def getPosts():
         with open('statistic.json1', 'r',encoding='utf-8') as f:
             json_data = f.read()
             # 将JSON字符串反序列化为字典对象
-            Stat.__dict__ = json.loads(json_data)
-            print(Stat.totalVisit)
+            statistic.Stat.__dict__ = json.loads(json_data)
+            print(statistic.Stat.totalVisit)
     except Exception as e:
         with open('statistic.json1', 'w',encoding='utf-8') as f:
-            json.dump(Stat.__dict__, f,ensure_ascii=False)
+            json.dump(statistic.Stat.__dict__, f,ensure_ascii=False)
 
     # 获取"posts/"目录下的所有文件
     files = glob.glob("posts/*")
@@ -135,12 +132,12 @@ def getPosts():
         artRouteMap[id] = ar.__dict__
         visitCnt = 0 #访问量
         commentCnt = 0 #评论数
-        if id in Stat.artStat:
-           visitCnt = Stat.artStat[id]['visitCnt']
-           commentCnt = Stat.artStat[id]['commentCnt']
+        if id in statistic.Stat.artStat:
+           visitCnt = statistic.Stat.artStat[id]['visitCnt']
+           commentCnt = statistic.Stat.artStat[id]['commentCnt']
            #print(visitCnt)
         else:
-            Stat.artStat[id] = statistic.ArtStat(title,visitCnt,commentCnt).__dict__
+            statistic.Stat.artStat[id] = statistic.ArtStat(title,visitCnt,commentCnt).__dict__
         post = Article(id,item,title, date, summary, body, imgfile, author, 0,visitCnt)
         articleMap[id] = post
         items.add(item)

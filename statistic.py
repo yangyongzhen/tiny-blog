@@ -4,6 +4,7 @@
 
 #文章访问量统计
 #param:名称，访问量，评论量
+
 class ArtStat:
     def __init__(self, title,visitCnt,cmtCnt):
         self.title = title
@@ -12,15 +13,15 @@ class ArtStat:
   
 #总的统计        
 class AllStat:
-    def __init__(self):
-        #总访问量
-        self.totalVisit = 0
-        #Notice通知
-        self.notice = ''
-        #置顶的文章
-        self.top_art= ''
+    def __init__(self,total,ntce,topArt):
+        self.totalVisit = total
+        self.ntce = ntce
+        self.top_art= topArt
         self.artStat = {}
 
+
+#访问量阅读量统计信息
+Stat = AllStat(0,'','')
 
 if __name__=="__main__":
     pass

@@ -2,6 +2,7 @@
 # author:yangyongzhen
 # blog.csdn.net/qq8864
 from flask import  Flask,render_template,request,redirect
+import statistic
 import articles
 import atexit
 import json
@@ -15,7 +16,8 @@ verify_code = "111111"
 # 首页
 @app.route('/')
 def index():
-    articles.Stat.totalVisit += 1
+    statistic.Stat.totalVisit += 1
+    print(statistic.Stat.ntce)
     page = 1
     page = request.args.get('page',1,int)
     print(page)
@@ -36,7 +38,7 @@ def index():
     for i in range(0,allpage):
         tabs.append(i)
     print(tabs)
-    return render_template("index.html",arts=curArts,news=articles.NewArts[:9],hots=articles.HotArts[:9],notice=articles.Stat.notice,items=articles.ItemList,curPage=page,tab=tabs)  #加入变量传递
+    return render_template("index.html",arts=curArts,news=articles.NewArts[:9],hots=articles.HotArts[:9],notice=statistic.Stat.ntce,items=articles.ItemList,curPage=page,tab=tabs)  #加入变量传递
 
 @app.route('/about')
 def about():
@@ -108,9 +110,9 @@ def article_detail():
         if i != length-1:
             next_art = art_list[i+1]
             
-        articles.Stat.artStat[id]['visitCnt'] += 1
-        articles.Stat.totalVisit += 1
-        articles.ItemMap[item][id]['visitCnt'] = articles.Stat.artStat[id]['visitCnt']
+        statistic.Stat.artStat[id]['visitCnt'] += 1
+        statistic.Stat.totalVisit += 1
+        articles.ItemMap[item][id]['visitCnt'] = statistic.Stat.artStat[id]['visitCnt']
         #print(art)
         #print(item_index)
         #print(art_index)
@@ -162,7 +164,7 @@ def pub_notice():
         my_notice['Mess'] = '授权码错误'
     else:
         my_notice['IsSucc'] = True
-        articles.Stat.notice = request.form['notice']
+        statistic.Stat.ntce = request.form['notice']
     return render_template("success.html",nt=my_notice) 
 
 # 提交置顶
@@ -176,7 +178,7 @@ def pub_top():
         my_notice['Mess'] = '授权码错误'
     else:
         my_notice['IsSucc'] = True
-        articles.Stat.top_art = request.form['top']
+        statistic.Stat.top_art = request.form['top']
     return render_template("success.html",nt=my_notice) 
 
 # 文件上传(发布文章)
@@ -222,7 +224,7 @@ def handle_exception(e):
 def saveData():
     #保存访问量数据       
     with open('statistic.json1', 'w',encoding='utf-8') as f:
-        json.dump(articles.Stat.__dict__, f,ensure_ascii=False)
+        json.dump(statistic.Stat.__dict__, f,ensure_ascii=False)
            
 # 监控退出时保存统计信息
 @atexit.register
